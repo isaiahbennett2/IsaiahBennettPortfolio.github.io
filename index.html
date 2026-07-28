@@ -517,6 +517,20 @@
       background: var(--parchment);
     }
 
+    .detail-gallery{
+      display:flex;
+      flex-direction:column;
+      gap:32px;
+      margin-bottom:48px;
+    }
+    
+    .detail-gallery-img{
+      width:100%;
+      display:block;
+      object-fit:contain;
+      background:var(--parchment);
+    }
+
     .detail-body {
       display: grid;
       grid-template-columns: 1.6fr 1fr;
@@ -1022,7 +1036,7 @@
          data-context="Middlebury College · GEOG 271 Cartography"
          data-year="2025"
          data-desc="Description coming soon!"
-         data-img="thumb/Type.png">
+         data-images="thumb/Type.png,thumb/Type.png2,thumb/Type.png3,thumb/Type.png4,thumb/Type.png5,thumb/Type.png6">
       <div class="card-img">
         <img src="thumb/Type.png" alt="Type Sheet" loading="lazy" />
       </div>
@@ -1040,9 +1054,7 @@
          data-context="Middlebury College · GEOG 271 Cartography"
          data-year="2025"
          data-desc="Description coming soon!"
-         data-img="thumb/Colors.png"
-         data-img="thumb/Colors2.png"
-         data-img="thumb/Colors3.png">
+         data-images="thumb/Colors.png,thumb/Colors2.png,thumb/Colors3.png">
       <div class="card-img">
         <img src="thumb/Colors.png" alt="Color Sheet" loading="lazy" />
       </div>
@@ -1435,12 +1447,20 @@
           </iframe>
         `;
       } else {
-        media.innerHTML = `
-          <img
-            class="detail-hero-img"
-            src="${card.dataset.img || ''}"
-            alt="${card.dataset.title || ''}">
-        `;
+          const images = (card.dataset.images || card.dataset.img || "")
+          .split(",")
+          .map(img => img.trim());
+          
+          media.innerHTML = `
+            <div class="detail-gallery">
+              ${images.map(src => `
+                <img
+                  class="detail-gallery-img"
+                  src="${src}"
+                  alt="${card.dataset.title}">
+              `).join("")}
+            </div>
+            `;
       }
       detail.classList.add('open');
       detail.scrollTop = 0;
