@@ -77,7 +77,28 @@
     /* ── HERO / INTRO ── */
     #hero {
       padding: 140px 52px 80px;
+      min-height: calc(100vh - 56px);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+    
+    .hero-content {
       max-width: 760px;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .hero-eyebrow {
@@ -607,11 +628,19 @@
     .stagger.visible > *:nth-child(8) { opacity:1; transform:none; transition-delay: 0.49s; }
     .stagger.visible > *:nth-child(n+9) { opacity:1; transform:none; transition-delay: 0.56s; }
 
+
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
-      #hero { padding: 120px 24px 60px; }
+      #hero {
+        padding: 120px 24px 60px;
+        grid-template-columns: 1fr;
+        gap: 40px; }
+      .hero-image {height: 400px;}
       .section-block { padding: 56px 24px; }
-      #about { padding: 56px 24px; grid-template-columns: 1fr; gap: 36px; }
+      #about {
+        padding: 56px 24px;
+        grid-template-columns: 1fr;
+        gap: 36px;}
       #contact { padding: 56px 24px 60px; }
       footer { padding: 20px 24px; }
       .project-grid { grid-template-columns: 1fr 1fr; }
@@ -619,7 +648,11 @@
       .contact-grid { grid-template-columns: 1fr 1fr; }
       .detail-inner { padding: 72px 24px 80px; }
       .detail-body { grid-template-columns: 1fr; }
-      .detail-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 24px; }
+      .detail-meta {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--rule);
+        padding-top: 24px; }
     }
 
     @media (max-width: 560px) {
@@ -628,6 +661,7 @@
       .project-grid.two-col { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { gap: 16px; }
+      .hero-image {height: 300px;}
     }
   </style>
 </head>
@@ -647,18 +681,30 @@
 </nav>
 
 <!-- HERO -->
+<!-- HERO -->
 <section id="hero">
-  <p class="hero-eyebrow">GIS · Cartography · Conservation</p>
-  <h1>Isaiah<br>Bennett</h1>
-  <p class="hero-bio">
-    With a joint degree in Geography and Environmental Studies from Middlebury College, I have had the great opportunity to begin my career in cartography and conservation GIS with the National Audubon Society, first as a Dangermond Fellow on their Enterprise GIS team, and now as a contracted GIS Specialist on their Canada Boreal Conservation team. At the heart of my work with Audubon and beyond is an understanding of the power of maps to influence change and tell stories, and I am passionate about using GIS and cartography to create impactful maps that support conservation initiatives, investigate complex socio-ecological interactions, and expose environmental injustices.
-  </p>
-  <div class="hero-links">
-    <a href="#highlights">View Work</a>
-    <a href="IsaiahBennettResume2026.pdf" download>Resume</a>
-    <a href="https://github.com/isaiahbennett2/" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/isaiah-bennett/" target="_blank">LinkedIn</a>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">GIS · Cartography · Conservation</p>
+
+    <h1>Isaiah<br>Bennett</h1>
+
+    <p class="hero-bio">
+      With a joint degree in Geography and Environmental Studies from Middlebury College, I have had the great opportunity to begin my career in cartography and conservation GIS with the National Audubon Society, first as a Dangermond Fellow on their Enterprise GIS team, and now as a contracted GIS Specialist on their Canada Boreal Conservation team. At the heart of my work with Audubon and beyond is an understanding of the power of maps to influence change and tell stories. I am passionate about using GIS and cartography to create impactful maps that support conservation initiatives, investigate complex socio-ecological interactions, and expose environmental injustices.
+    </p>
+
+    <div class="hero-links">
+      <a href="#highlights">View Work</a>
+      <a href="IsaiahBennettResume2026.pdf" download>Resume</a>
+      <a href="https://github.com/isaiahbennett2/" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/isaiah-bennett/" target="_blank">LinkedIn</a>
+    </div>
   </div>
+
+  <div class="hero-image">
+    <img src="About/opening.jpg" alt="Isaiah Bennett" />
+  </div>
+
 </section>
 
 <!-- HIGHLIGHTS -->
@@ -940,24 +986,6 @@
 
     <div class="project-card"
          data-cat="Academic · Middlebury College"
-         data-title="Identifying Greenspace Ownership for Conservation in Montpelier, VT"
-         data-tools="QGIS · Adobe Illustrator"
-         data-context="Middlebury College · GEOG 271 Cartography"
-         data-year="2025"
-         data-desc="Description coming soon!"
-         data-img="thumb/MontpelierGreenspace.png">
-      <div class="card-img">
-        <img src="thumb/MontpelierGreenspace.png" alt="Montpelier Greenspace" loading="lazy" />
-      </div>
-      <div class="card-hover">
-        <span class="card-hover-arrow">↗</span>
-        <span class="card-hover-cat">Academic · Middlebury College</span>
-        <span class="card-hover-title">Greenspace Ownership for Conservation — Montpelier, VT</span>
-      </div>
-    </div>
-
-    <div class="project-card"
-         data-cat="Academic · Middlebury College"
          data-title="Developing Communities Near Social Infrastructure — Addison County, VT"
          data-tools="QGIS · Adobe Illustrator"
          data-context="Middlebury College · GEOG 271 Cartography"
@@ -971,6 +999,24 @@
         <span class="card-hover-arrow">↗</span>
         <span class="card-hover-cat">Academic · Middlebury College</span>
         <span class="card-hover-title">Communities Near Social Infrastructure — Addison County</span>
+      </div>
+    </div>
+    
+    <div class="project-card"
+         data-cat="Academic · Middlebury College"
+         data-title="Identifying Greenspace Ownership for Conservation in Montpelier, VT"
+         data-tools="QGIS · Adobe Illustrator"
+         data-context="Middlebury College · GEOG 271 Cartography"
+         data-year="2025"
+         data-desc="Description coming soon!"
+         data-img="thumb/MontpelierGreenspace.png">
+      <div class="card-img">
+        <img src="thumb/MontpelierGreenspace.png" alt="Montpelier Greenspace" loading="lazy" />
+      </div>
+      <div class="card-hover">
+        <span class="card-hover-arrow">↗</span>
+        <span class="card-hover-cat">Academic · Middlebury College</span>
+        <span class="card-hover-title">Greenspace Ownership for Conservation — Montpelier, VT</span>
       </div>
     </div>
 
